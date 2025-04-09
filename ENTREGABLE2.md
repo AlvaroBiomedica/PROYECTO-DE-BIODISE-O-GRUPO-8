@@ -2,7 +2,7 @@
 ### *INTEGRANTES*
 
 
-- Alvaro Rodrigo Sucaticona Ambicho
+- Alvaro Rodrigo Sucaticona Ambicho  (Gestor de entregas y administración en GitHub)
 - Mara Del Aguila
 - Maria Liz Valdivia
 - Joe Leonardo Ponce Sarmiento
