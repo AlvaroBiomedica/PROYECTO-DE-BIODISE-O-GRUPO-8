@@ -129,7 +129,8 @@ El cuerpo desarrolla varios mecanismos compensatorios que permiten mantener la e
 
 ---
 
-## **Implicaciones del Diagnóstico (Pronóstico, opciones de tratamiento y rehabilitación, impacto psicosocial)**
+## **Implicaciones del Diagnóstico**
+## (Pronóstico, opciones de tratamiento y rehabilitación, impacto psicosocial)
 
 **Pronóstico:**  
 Sufre escoliosis cervical izquierda, con una curva compensatoria dorsal derecha moderada, pies cavos varos y además tortícolis congénita izquierda. Estas afecciones no otorgan dolor en la niña y no han afectado en su caminata ni deformación en rodillas.
