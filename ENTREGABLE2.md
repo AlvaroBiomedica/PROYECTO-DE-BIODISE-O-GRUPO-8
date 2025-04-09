@@ -1,4 +1,11 @@
 # **ENTREGABLE 2**
+### *INTEGRANTES*
+
+
+- Alvaro Rodrigo Sucaticona Ambicho
+- Mara Del Aguila
+- Maria Liz Valdivia
+- Joe Leonardo Ponce Sarmiento
 
 ## **ÍNDICE:**
 1. [**Descripción del Caso**](#descripción-del-caso)
