@@ -1,4 +1,4 @@
-# ENTREGABLE 2
+# ENTREGABLE 3
 
 **INTEGRANTES**  
 - Alvaro Rodrigo Sucaticona Ambicho (Gestor de Entregas y administración en GitHub)  
