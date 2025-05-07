@@ -1,9 +1,10 @@
-Informe semana 6
-Integrantes
--Alvaro Rodrigo Sucaticona Ambicho (Gestor de entregas y administración en GitHub)
--Mara Del Aguila
--Maria Liz Valdivia
--Joe Leonardo Ponce Sarmiento
+## Informe semana 6
+## Integrantes
+
+- Alvaro Rodrigo Sucaticona Ambicho (Gestor de entregas y administración en GitHub)  
+- Mara Del Aguila  
+- Maria Liz Valdivia  
+- Joe Leonardo Ponce Sarmiento  
 
 Motor dirección básica:
 Este ejemplo permite alternar el sentido de giro de un motorreductor DC GA12-N20 mediante un módulo controlador de motores L298N, sin controlar la velocidad. El sistema ejecuta un cambio de dirección cada 5 segundos, lo cual permite simular mecanismos biomédicos que requieren inversión de movimiento como válvulas alternantes o dispositivos de tracción reversibles.
