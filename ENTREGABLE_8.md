@@ -22,8 +22,7 @@
 
 **SISTEMA  DE MONITOREO:**  
 ![Maqueta física 1](https://i.imgur.com/ViivCiA.jpeg)
-
-**Insertar imagen:**  
+  
 ![Maqueta física 2](https://i.imgur.com/bNh3poT.jpeg)
 
 ---
