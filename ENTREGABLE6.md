@@ -5,7 +5,7 @@
 - Mara Del Aguila  
 - Maria Liz Valdivia  
 - Joe Leonardo Ponce Sarmiento  
-
+- Ushiñahua Carreño Leonardo Gabriel
 ---
 
 ## ÍNDICE
