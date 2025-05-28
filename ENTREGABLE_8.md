@@ -27,7 +27,7 @@
 
 ---
 
-## 2. Ficha resumen (1 hoja)
+## 2. Ficha resumen
 
 **Nombre del equipo:** grupo 8  
 **Proyecto:** PRESSCORSET  
@@ -58,7 +58,7 @@ Se utilizó únicamente la plastilina como material para representar nuestro boc
 
 ---
 
-## 3. Reflexión escrita breve (máx. media página)
+## 3. Reflexión
 
 **¿Qué representaron en la maqueta y por qué?**  
 Esta maqueta representa el sistema de monitoreo electrónico que será implementado en el corset de la paciente, se muestran los componentes electrónicos que utilizaremos para que se pueda tener una visión general del diseño funcional que se usará en el prototipo real.  
