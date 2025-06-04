@@ -14,7 +14,7 @@
 - [Plan de usabilidad basado en evidencias](#plan-de-usabilidad-basado-en-evidencias)  
 
 ## Esquema Electrónico  
-![Esquema Electrónico](https://i.imgur.com/EXzl7DD.png)
+![Esquema Electrónico](https://i.imgur.com/YK1RhPU.png)
 
 ## Modelado 3D de los componentes por separado  
 [Ver modelo 3D en Onshape](https://cad.onshape.com/documents/6591319ee9bbbc92ea372064/w/e4231bdc53cee7b7b584d948/e/517160454e6869ccc19b3208?renderMode=0&uiState=683fd32726113e3daca92956)  
