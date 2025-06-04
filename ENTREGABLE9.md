@@ -1,4 +1,4 @@
-# ENTRAGABLE 9  
+# ENTREGABLE 9  
 **Elaborado por:** Grupo 8  
 
 **INTEGRANTES:**  
