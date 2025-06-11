@@ -103,64 +103,76 @@ Muchos pacientes reportan vergüenza, incomodidad social o frustración relacion
 
 ---
 ## Código Arduino
-
-```arduino
 #include <Wire.h>
+#include <HX711.h>
 #include "RTClib.h"
-#include "HX711.h"
-#include "BluetoothSerial.h"
+#include <BluetoothSerial.h>
 
+HX711 scale;
 RTC_DS3231 rtc;
-BluetoothSerial BT;
-#define NUM_SENSORES 5
-HX711 balanzas[NUM_SENSORES];
-const int pinDT[NUM_SENSORES] = {26,18,32,33,14};
-const int pinSCK[NUM_SENSORES] = {27,19,25,4,12};
-float umbralPresion = 2000.0;
-bool corsetActivo = false;
-DateTime horaInicio;
+BluetoothSerial SerialBT;
+
+// Pines HX711
+#define DT 4
+#define SCK 5
+
+const long umbral = 100;  // Ajusta según calibración
 unsigned long tiempoUso = 0;
+unsigned long ultimoEnvio = 0;
+String diaAnterior = "";
 
 void setup() {
-  BT.begin("CorsetMonitorESP32");
-  Wire.begin(); rtc.begin();
-  for (int i = 0; i < NUM_SENSORES; i++) {
-    balanzas[i].begin(pinDT[i], pinSCK[i]);
-    balanzas[i].set_scale(); balanzas[i].tare();
+  Serial.begin(115200);
+  SerialBT.begin("CORSE_BT");
+
+  // RTC
+  Wire.begin();
+  if (!rtc.begin()) {
+    Serial.println("RTC no encontrado");
+    while (1);
   }
+  if (rtc.lostPower()) {
+    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+  }
+
+  // HX711
+  scale.begin(DT, SCK);
+  scale.set_scale();           // Si tienes factor de calibración, ponlo aquí
+  scale.tare();                // Pone a cero la balanza
 }
 
 void loop() {
-  bool hayPresion = false;
-  for (int i = 0; i < NUM_SENSORES; i++) {
-    if (balanzas[i].is_ready()) {
-      if (balanzas[i].get_units() >= umbralPresion) {
-        hayPresion = true; break;
-      }
-    }
-  }
   DateTime ahora = rtc.now();
-  if (hayPresion && !corsetActivo) {
-    corsetActivo = true; horaInicio = ahora;
+  String dias[] = {"Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"};
+  String diaActual = dias[ahora.dayOfTheWeek()];
+
+  // Reiniciar contador si cambió el día
+  if (diaActual != diaAnterior) {
+    tiempoUso = 0;
+    diaAnterior = diaActual;
   }
-  if (!hayPresion && corsetActivo) {
-    corsetActivo = false;
-    tiempoUso += ahora.unixtime() - horaInicio.unixtime();
+
+  long lectura = scale.get_units();
+
+  if (lectura >= umbral) {
+    tiempoUso++;
   }
-  if (BT.available()) {
-    String cmd = BT.readStringUntil('\n');
-    if (cmd == "PEDIR_DATOS") {
-      unsigned long total = tiempoUso;
-      if (hayPresion) total += ahora.unixtime() - horaInicio.unixtime();
-      int h = total / 3600; int m = (total % 3600) / 60;
-      BT.println("USO: " + String(h) + " h " + String(m) + " min | ESTADO: " +
-                 (hayPresion ? "Presión presente" : "Sin presión"));
-    }
-    if (cmd == "REINICIAR_DIA") tiempoUso = 0;
+
+  if (millis() - ultimoEnvio > 10000) {
+    ultimoEnvio = millis();
+    int horas = tiempoUso / 3600;
+    int minutos = (tiempoUso % 3600) / 60;
+    int segundos = tiempoUso % 60;
+
+    char buffer[64];
+    sprintf(buffer, "DIA=%s;TIEMPO=%02d:%02d:%02d", diaActual.c_str(), horas, minutos, segundos);
+    SerialBT.println(buffer);
+    Serial.println(buffer);
   }
+
   delay(1000);
 }
-```
+
 ## Referencias
 
 [1] F. K. Fuss, A. Ahmad, A. M. Tan, R. Razman y Y. Weizman,  
