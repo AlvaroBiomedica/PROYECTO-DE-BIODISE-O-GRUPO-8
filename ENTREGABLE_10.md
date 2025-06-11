@@ -116,7 +116,7 @@ BluetoothSerial SerialBT;
 #define DT 4
 #define SCK 5
 
-const long umbral = 100;  // Ajusta según calibración
+const long umbral = 100;  // Umbral de presión, ajusta tras calibrar
 unsigned long tiempoUso = 0;
 unsigned long ultimoEnvio = 0;
 String diaAnterior = "";
@@ -137,8 +137,8 @@ void setup() {
 
   // HX711
   scale.begin(DT, SCK);
-  scale.set_scale();           // Si tienes factor de calibración, ponlo aquí
-  scale.tare();                // Pone a cero la balanza
+  scale.set_scale();           // Ajustar si tienes el factor de calibración
+  scale.tare();                // Pone a cero el sensor al inicio
 }
 
 void loop() {
@@ -146,7 +146,7 @@ void loop() {
   String dias[] = {"Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"};
   String diaActual = dias[ahora.dayOfTheWeek()];
 
-  // Reiniciar contador si cambió el día
+  // Reiniciar contador si cambia el día
   if (diaActual != diaAnterior) {
     tiempoUso = 0;
     diaAnterior = diaActual;
@@ -160,6 +160,7 @@ void loop() {
 
   if (millis() - ultimoEnvio > 10000) {
     ultimoEnvio = millis();
+
     int horas = tiempoUso / 3600;
     int minutos = (tiempoUso % 3600) / 60;
     int segundos = tiempoUso % 60;
@@ -172,6 +173,7 @@ void loop() {
 
   delay(1000);
 }
+
 
 ## Referencias
 
